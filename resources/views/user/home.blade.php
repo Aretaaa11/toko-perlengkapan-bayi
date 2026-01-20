@@ -22,19 +22,14 @@
 			<div class="container">
 				<h2 class="text-center mb-5 fw-bold">Produk Unggulan</h2>
 				<div class="row g-5 mt-3">
-					@forelse(collect([
-						(object)['id' => 1, 'nama' => 'Popok Bayi Premium', 'harga' => 85000, 'foto' => 'dummy/popok.jpg'],
-						(object)['id' => 2, 'nama' => 'Botol Susu Anti Kolik', 'harga' => 120000, 'foto' => 'dummy/botol.jpg'],
-						(object)['id' => 3, 'nama' => 'Bantal Bayi Ergonomis', 'harga' => 95000, 'foto' => 'dummy/bantal.jpg'],
-						(object)['id' => 4, 'nama' => 'Selimut Bayi Lembut', 'harga' => 75000, 'foto' => 'dummy/selimut.jpg'],
-					]) as $product)
+					@forelse($products as $product)
 						<div class="col-md-3">
 							<div class="card h-100 shadow-sm">
 								<img src="{{ asset('storage/' . $product->foto) }}" class="card-img-top" alt="{{ $product->nama }}">
 								<div class="card-body text-center">
 									<h5 class="card-title">{{ $product->nama }}</h5>
 									<p class="card-text text-muted">Rp {{ number_format($product->harga, 0, ',', '.') }}</p>
-									<button class="btn btn-outline-primary" disabled>Produk Detail</button>
+									<a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-primary">Produk Detail</a>
 								</div>
 							</div>
 						</div>
