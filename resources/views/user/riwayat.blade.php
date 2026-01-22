@@ -1,23 +1,23 @@
 @extends('layouts.user.app')
 
-@section('title', 'Riwayat Pesanan')
+@section('title', 'Order History')
 
 @section('content')
 	<div class="container py-5">
-		<h2 class="mb-4">Riwayat Pesanan</h2>
+		<h2 class="mb-4">Order History</h2>
 
 		@if($orders->isEmpty())
-			<div class="alert alert-info">Belum ada pesanan.</div>
+			<div class="alert alert-info">No orders yet.</div>
 		@else
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>No</th>
-						<th>Nama Produk</th>
-						<th>Tanggal</th>
+					<th>Product Name</th>
+					<th>Date</th>
 						<th>Total</th>
-						<th>Status Pembayaran</th>
-						<th>Aksi</th>
+					<th>Payment Status</th>
+					<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,12 +31,12 @@
 								@if($order->order->status_pembayaran === 'pending')
 									<span class="badge bg-warning text-dark">Pending</span>
 								@elseif($order->order->status_pembayaran === 'lunas')
-									<span class="badge bg-primary">Lunas</span>
+									<span class="badge bg-primary">Paid</span>
 								@endif
 							</td>
 							<td>
 								@if($order->order->status_pembayaran === 'pending')
-									<a href="{{ route('checkout.sukses') }}" class="btn btn-sm btn-primary">Upload Bukti</a>
+									<a href="{{ route('checkout.sukses') }}" class="btn btn-sm btn-primary">Upload Proof</a>
 								@endif
 							</td>
 						</tr>
@@ -45,6 +45,6 @@
 			</table>
 		@endif
 
-		<a href="{{ route('home') }}" class="btn btn-secondary mt-3">Kembali ke Beranda</a>
+		<a href="{{ route('home') }}" class="btn btn-secondary mt-3">Back to Home</a>
 	</div>
 @endsection

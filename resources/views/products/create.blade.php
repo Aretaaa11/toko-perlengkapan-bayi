@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section('title', 'Tambah Produk')
+@section('title', 'Add Product')
 @section('content')
-<div class="container-xxl flex-grow-1 container-p-y">
+<div class="container-fluid">
     {{-- Breadcrumb dinamis --}}
     <x-breadcrumb :items="[
-        'Produk' => route('products.index'),
-        'Tambah Produk' => ''
+        'Products' => route('products.index'),
+        'Add Product' => ''
     ]" />
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
         <div class="mb-4">
             <a href="{{ url()->previous() }}" class="btn btn-secondary">
-                <i class="bx bx-arrow-back"></i> Kembali
+                <i class="ti ti-arrow-back me-1"></i> Back
             </a>
         </div>
         <!-- Basic with Icons -->
@@ -21,7 +21,7 @@
                     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="foto">Foto</label>
+                            <label class="col-sm-2 col-form-label" for="foto">Thumbnail</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <input
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="nama">Nama</label>
+                            <label class="col-sm-2 col-form-label" for="nama">Name</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"
@@ -50,8 +50,8 @@
                                         name="nama"
                                         class="form-control @error('nama') is-invalid @enderror"
                                         id="nama"
-                                        placeholder="Silahkan isi nama produk"
-                                        aria-label="Silahkan isi nama produk"
+                                        placeholder="Please enter product name"
+                                        aria-label="Please enter product name"
                                         aria-describedby="basic-icon-default-fullname2"
                                         value="{{ old('nama') }}"
                                     />
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-label" for="deskripsi">Deskripsi</label>
+                            <label class="col-sm-2 form-label" for="deskripsi">Description</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-message2" class="input-group-text"
@@ -72,8 +72,8 @@
                                         name="deskripsi"
                                         id="deskripsi"
                                         class="form-control @error('deskripsi') is-invalid @enderror"
-                                        placeholder="Silahkan isi deskripsi produk"
-                                        aria-label="Silahkan isi deskripsi produk"
+                                        placeholder="Please enter product description"
+                                        aria-label="Please enter product description"
                                         aria-describedby="basic-icon-default-message2"
                                     >{{ old('deskripsi') }}</textarea>
                                     @error('deskripsi')
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-label" for="kategori_id">Kategori</label>
+                            <label class="col-sm-2 form-label" for="kategori_id">Category</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-kategori" class="input-group-text"
@@ -95,7 +95,7 @@
                                         class="form-control @error('kategori_id') is-invalid @enderror"
                                         aria-describedby="basic-icon-default-kategori"
                                     >
-                                        <option value="">Pilih Kategori</option>
+                                        <option value="">Choose Category</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('kategori_id') == $category->id ? 'selected' : '' }}>
                                                 {{ $category->nama }}
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-label" for="harga">Harga</label>
+                            <label class="col-sm-2 form-label" for="harga">Price</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-phone2" class="input-group-text"
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-label" for="stok">Stok</label>
+                            <label class="col-sm-2 form-label" for="stok">Stock</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-stok" class="input-group-text"
@@ -157,7 +157,13 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                >
+                                <i class="ti ti-plus me-1"></i>
+                                Save
+                                </button>
                             </div>
                         </div>
                     </form>

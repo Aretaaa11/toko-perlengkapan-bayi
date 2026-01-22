@@ -16034,7 +16034,7 @@ textarea.form-control-lg {
   width: 100%;
   background: var(--bs-body-bg);
   padding: 0 10px;
-  top: 72px;
+  top: 0px;
 }
 @media (max-width: 991.98px) {
   .app-header {
@@ -16156,7 +16156,7 @@ body {
 
 #main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .left-sidebar {
   position: fixed;
-  top: 72px;
+  top: 0cqmax;
 }
 #main-wrapper[data-layout=vertical][data-header-position=fixed] .app-header {
   position: fixed;

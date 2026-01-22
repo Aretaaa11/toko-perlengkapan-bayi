@@ -1,47 +1,47 @@
-<!DOCTYPE html>
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="{{ asset('/assets/') }}" data-template="vertical-menu-template-free">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CRUD | @yield('title')</title>
-    <meta name="description" content="" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/boxicons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-    <script src="{{ asset('assets/js/config.js') }}"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="shortcut icon" type="image/png" href="/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="/assets/css/styles.min.css" />
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 </head>
 <body>
-    @stack('scripts')
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            @include('components.layout.sidebar')
-            <div class="layout-page">
+    <!-- @stack('scripts') -->
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+        <!-- Sidebar Start -->
+        @include('components.layout.sidebar')
+        <!-- Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
+            <header class="app-header">
                 @include('components.layout.navbar')
-                <div class="content-wrapper">
+            </header>
+
+            <div class="body-wrapper-inner d-flex flex-column" style="width: calc(100vw - 270px); margin-left: 0; padding-left: 0; padding-right: 0; flex: 1; display: flex; flex-direction: column;">
+                <div style="flex: 1;">
                     @yield('content')
-                    @include('components.layout.footer')
                 </div>
+                @include('components.layout.footer')
             </div>
         </div>
-        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+
+    <!-- Vendor JS -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/app.min.js"></script>
+    <script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
+    <!-- Solar Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     @stack('scripts')
 </body>
 </html>

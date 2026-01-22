@@ -47,7 +47,7 @@ class ProductController extends Controller
         ]);
 
         return redirect()->route('products.index')
-            ->with('success', 'Produk berhasil ditambahkan.');
+            ->with('success', 'Product successfully added.');
     }
 
     public function edit(Product $product): View
@@ -85,7 +85,7 @@ class ProductController extends Controller
         $product->update($data);
 
         return redirect()->route('products.index')
-            ->with('success', 'Produk berhasil diperbarui.');
+            ->with('success', 'Product successfully updated.');
     }
 
     public function destroy(Product $product)
@@ -97,7 +97,7 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')
-            ->with('success', 'Produk berhasil dihapus.');
+            ->with('success', 'Product successfully deleted.');
     }
 
     public function show(Product $product)

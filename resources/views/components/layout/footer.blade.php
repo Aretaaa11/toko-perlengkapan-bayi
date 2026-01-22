@@ -1,8 +1,3 @@
-<footer class="content-footer footer bg-footer-theme">
-    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-        <div class="mb-2 mb-md-0">
-        © <script>document.write(new Date().getFullYear());</script>, made with by <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Siti Syahda Rana Areta</a>
-        </div>
-    </div>
-</footer>
-<div class="content-backdrop fade"></div>
+<div class="py-6 px-6 text-center" style="border-top: 1px solid #e9ecef; margin-top: auto;">
+    <p class="mb-0 fs-4">© <script>document.write(new Date().getFullYear());</script>, made with love by Siti Syahda Rana Areta</p>
+</div>

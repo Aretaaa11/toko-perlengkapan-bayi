@@ -17,14 +17,14 @@
 
 		@if($cart && count($cart) > 0)
 			<div class="row">
-				<!-- Ringkasan Pesanan -->
+				<!-- Order Summary -->
 				<div class="col-md-7">
-					<h4 class="fw-bold mb-3">Ringkasan Pesanan</h4>
+					<h4 class="fw-bold mb-3">Order Summary</h4>
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th>Produk</th>
-								<th>Jumlah</th>
+								<th>Product</th>
+								<th>Quantity</th>
 								<th>Total</th>
 							</tr>
 						</thead>
@@ -48,35 +48,35 @@
 					</table>
 				</div>
 
-				<!-- Form Data Pembeli -->
+				<!-- Buyer Information -->
 				<div class="col-md-5">
-					<h4 class="fw-bold mb-3">Data Pembeli</h4>
+					<h4 class="fw-bold mb-3">Buyer Information</h4>
 					<form action="{{ route('checkout.process') }}" method="POST">
 						@csrf
 						<div class="mb-3">
-							<label for="nama" class="form-label">Nama Lengkap</label>
+							<label for="nama" class="form-label">Full Name</label>
 							<input type="text" name="nama" id="nama" value="{{ old('nama', $user->name ?? '') }}" class="form-control" disabled>
 						</div>
 						<div class="mb-3">
-							<label for="alamat" class="form-label">Alamat Pengiriman</label>
+							<label for="alamat" class="form-label">Shipping Address</label>
 							<textarea name="alamat" id="alamat" class="form-control" rows="3" required>{{ old('alamat', $user->alamat ?? '') }}</textarea>
 						</div>
 						<div class="mb-3">
-							<label for="telepon" class="form-label">No. Telepon</label>
+							<label for="telepon" class="form-label">Phone Number</label>
 							<input type="text" name="telepon" id="telepon" value="{{ old('telepon', $user->telepon ?? '') }}" class="form-control" required>
 						</div>
 						<div class="mb-3">
-							<label for="metode" class="form-label">Metode Pembayaran</label>
-							<input type="text" value="Transfer Bank" class="form-control" disabled>
+							<label for="metode" class="form-label">Payment Method</label>
+							<input type="text" value="Bank Transfer" class="form-control" disabled>
 							<input type="hidden" name="metode" value="transfer">
 						</div>
-						<button type="submit" class="btn btn-primary w-100 btn-lg">Proses Pembayaran user</button>
+							<button type="submit" class="btn btn-primary w-100 btn-md">Process Checkout</button>
 					</form>
 				</div>
 			</div>
 		@else
-			<div class="alert alert-warning">Keranjang masih kosong.</div>
-			<a href="/" class="btn btn-secondary mt-3">Lanjut Belanja</a>
+			<div class="alert alert-warning">Shopping cart is empty.</div>
+			<a href="/" class="btn btn-secondary mt-3">Continue Shopping</a>
 		@endif
 	</div>
 @endsection

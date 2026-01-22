@@ -12,14 +12,14 @@
 
 		@if($cart && count($cart) > 0)
 			<div class="row">
-				<!-- Ringkasan Pesanan -->
+				<!-- Order Summary -->
 				<div class="col-md-7">
-					<h4 class="fw-bold mb-3">Ringkasan Pesanan</h4>
+					<h4 class="fw-bold mb-3">Order Summary</h4>
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th>Produk</th>
-								<th>Jumlah</th>
+								<th>Product</th>
+								<th>Quantity</th>
 								<th>Total</th>
 							</tr>
 						</thead>
@@ -43,39 +43,39 @@
 					</table>
 				</div>
 
-				<!-- Form Data Pembeli -->
+				<!-- Buyer Information -->
 				<div class="col-md-5">
-					<h4 class="fw-bold mb-3">Data Pembeli</h4>
+					<h4 class="fw-bold mb-3">Buyer Information</h4>
 					<form action="{{ route('checkout.process') }}" method="POST">
 						@csrf
 						<div class="mb-3">
-							<label for="nama" class="form-label">Nama Lengkap</label>
+							<label for="nama" class="form-label">Full Name</label>
 							<input type="text" name="nama" id="nama" class="form-control" required>
 						</div>
 						<div class="mb-3">
-							<label for="alamat" class="form-label">Alamat Pengiriman</label>
+							<label for="alamat" class="form-label">Shipping Address</label>
 							<textarea name="alamat" id="alamat" class="form-control" rows="3" required></textarea>
 						</div>
 						<div class="mb-3">
-							<label for="telepon" class="form-label">No. Telepon</label>
+							<label for="telepon" class="form-label">Phone Number</label>
 							<input type="text" name="telepon" id="telepon" class="form-control" required>
 						</div>
 						<div class="mb-3">
-							<label for="metode" class="form-label">Metode Pembayaran</label>
+							<label for="metode" class="form-label">Payment Method</label>
 							<select name="metode" id="metode" class="form-select" required>
-								<option value="">-- Pilih Metode --</option>
-								<option value="transfer">Transfer Bank</option>
+								<option value="">-- Select Method --</option>
+								<option value="transfer">Bank Transfer</option>
 								<option value="cod">Cash on Delivery (COD)</option>
 								<option value="ewallet">E-Wallet (OVO, Dana, GoPay)</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-success w-100 btn-lg">Proses Pembayaran checkout</button>
+							<button type="submit" class="btn btn-success w-100 btn-md">Process Checkout</button>
 					</form>
 				</div>
 			</div>
 		@else
-			<div class="alert alert-warning">Keranjang masih kosong.</div>
-			<a href="/" class="btn btn-secondary mt-3">Lanjut Belanja</a>
+			<div class="alert alert-warning">Shopping cart is empty.</div>
+			<a href="/" class="btn btn-secondary mt-3">Continue Shopping</a>
 		@endif
 	</div>
 @endsection

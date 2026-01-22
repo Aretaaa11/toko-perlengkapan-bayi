@@ -28,7 +28,7 @@ class CartController extends Controller
 			];
 		}
 		session()->put('cart', $cart);
-		return redirect()->route('cart.index')->with('success', 'Produk ditambahkan ke keranjang!');
+		return redirect()->route('cart.index')->with('success', 'Product added to cart!');
 	}
 
 	public function remove(Product $product)
@@ -38,7 +38,7 @@ class CartController extends Controller
 			unset($cart[$product->id]);
 			session()->put('cart', $cart);
 		}
-		return redirect()->route('cart.index')->with('success', 'Produk dihapus dari keranjang!');
+		return redirect()->route('cart.index')->with('success', 'Product removed from cart!');
 	}
 
 	public function update(Request $request, Product $product)
@@ -48,6 +48,6 @@ class CartController extends Controller
 			$cart[$product->id]['quantity'] = $request->quantity;
 			session()->put('cart', $cart);
 		}
-		return redirect()->route('cart.index')->with('success', 'Jumlah produk diperbarui!');
+		return redirect()->route('cart.index')->with('success', 'Product quantity updated!');
 	}
 }

@@ -26,7 +26,7 @@ class CheckoutController extends Controller
 		Log::info('Cart content', ['cart' => $cart]);
 		if (!$cart || count($cart) === 0) {
 			Log::warning('Cart is empty during checkout', ['user_id' => Auth::id()]);
-			return redirect()->route('cart.index')->with('error', 'Keranjang masih kosong.');
+			return redirect()->route('cart.index')->with('error', 'Cart is empty.');
 		}
 
 		$validated = $request->validate([
@@ -45,7 +45,7 @@ class CheckoutController extends Controller
 			$product = Product::find($productId);
 			if ($product && $product->stok < $item['quantity']) {
 				Log::warning('Stok produk tidak cukup', ['product_id' => $productId, 'stok' => $product->stok, 'requested' => $item['quantity']]);
-				return redirect()->back()->with('error', "Stok produk {$product->nama} tidak mencukupi.");
+				return redirect()->back()->with('error', "Product {$product->nama} stock is insufficient.");
 			}
 		}
 
@@ -78,7 +78,7 @@ class CheckoutController extends Controller
 
 		session()->forget('cart');
 		Log::info('Checkout process finished', ['order_id' => $order->id]);
-		return redirect()->route('checkout.sukses')->with('success', 'Pesanan berhasil diproses!');
+		return redirect()->route('checkout.sukses')->with('success', 'Order successfully processed!');
 	}
 
 	public function sukses()
@@ -109,6 +109,6 @@ class CheckoutController extends Controller
 			$order->save();
 		}
 
-		return redirect()->route('orders.history')->with('success', 'Bukti pembayaran berhasil diupload.');
+		return redirect()->route('orders.history')->with('success', 'Payment proof successfully uploaded.');
 	}
 }
