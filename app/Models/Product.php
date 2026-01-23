@@ -30,4 +30,20 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'kategori_id');
     }
+
+    /**
+     * Get the order products for this product.
+     */
+    public function orderProducts()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+
+    /**
+     * Get the orders that contain this product.
+     */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_products');
+    }
 }

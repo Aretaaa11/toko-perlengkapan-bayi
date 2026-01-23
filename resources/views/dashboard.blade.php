@@ -4,9 +4,9 @@
 
 @section('content')
 	<div class="container-xxl flex-grow-1 container-p-y">
-		<div class="row">
-			<!-- Congratulations Card -->
-			<div class="col-lg-12 mb-4 order-0">
+		<!-- Welcome Section -->
+		<div class="row mb-4">
+			<div class="col-lg-12 order-0">
 				<div class="card">
 					<div class="d-flex align-items-end row">
 						<div class="col-sm-7">
@@ -24,6 +24,57 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<!-- Statistics Cards Section -->
+		<div class="row mb-4">
+			<x-statistics-card
+				icon="fa-shopping-bag"
+				title="Products Sold"
+				:value="$totalProductsSold"
+				color="primary"
+				suffix=" products"
+			/>
+
+			<x-statistics-card
+				icon="fa-money-bill-wave"
+				title="Total Revenue"
+				:value="$totalRevenue"
+				color="success"
+			/>
+
+			<x-statistics-card
+				icon="fa-boxes"
+				title="Total Orders"
+				:value="count($recentOrders) > 0 ? \App\Models\Order::count() : 0"
+				color="info"
+				suffix=" orders"
+			/>
+
+			<x-statistics-card
+				icon="fa-chart-line"
+				title="Average Revenue"
+				:value="count($recentOrders) > 0 ? round(\App\Models\Order::avg('total')) : 0"
+				color="warning"
+			/>
+		</div>
+
+		<!-- Order Status Summary -->
+		<div class="row mb-4">
+			<div class="col-12">
+				<x-order-status-summary :orderStats="$orderStats" />
+			</div>
+		</div>
+
+		<!-- Recent Orders and Top Products -->
+		<div class="row">
+			<div class="col-lg-8 mb-4">
+				<x-recent-orders :recentOrders="$recentOrders" />
+			</div>
+
+			<div class="col-lg-4">
+				<x-top-products :topProducts="$topProducts" />
 			</div>
 		</div>
 	</div>
